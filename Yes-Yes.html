@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Confession Website</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.8/main.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.8/main.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+    <div class="container">
+        <div class="gif">
+            <img src="lovely-cat.gif" alt="Cat animation">
+        </div>
+        <h1><b>When?</b></h1>
+
+        <form id="dateForm">
+            <div class="date"> 
+                <label for="date"></label>
+                <div class="date-input-container">
+                    <input type="date" id="date" name="date" required>
+                    <button type="submit">Send</button>
+                </div>
+            </div>
+        </form>
+
+        <div class="audio">
+            <audio id="audioPlayer" controls>
+                <source src="Doki Doki Literature Club! - OST Okay Everyone!.mp3">
+            </audio>        
+        </div>
+    </div>
+
+    <script>
+        window.onload = function() {
+            const audioPlayer = document.getElementById('audioPlayer');
+            let audioStarted = false;
+
+            audioPlayer.volume = 0.02;
+
+            document.body.addEventListener('click', function () {
+                if (!audioStarted) {
+                    audioPlayer.play().then(() => {
+                        audioStarted = true;
+                    }).catch(error => {
+                        console.log("Autoplay error:", error);
+                    });
+                }
+            });
+        };
+
+    </script>
+
+    <script>
+        document.getElementById("dateForm").addEventListener("submit", function(event) {
+            event.preventDefault();
+
+            const dateInput = document.getElementById("date").value;
+
+            if (dateInput) {
+                window.location.href = `Yes-Yes1.html?date=${dateInput}`;
+            } else {
+                alert("Please select a date before submitting.");
+            }
+        });
+    </script>
+
+</body>
+</html>
