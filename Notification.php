@@ -10,9 +10,9 @@ $mail = new PHPMailer();
 
 $mail->isSMTP();
 
-$mail->SMTPDebug = SMTP::DEBUG_CONNECTION;
+$mail->SMTPDebug = SMTP::DEBUG_SERVER;
 
-$mail->Host = 'smtp.example.com';
+$mail->Host = 'smtp.gmail.com';
 
 $mail->Port = 465;
 
@@ -33,7 +33,7 @@ $mail->SMTPAuth = true;
 
 $mail->Username = 'serverside42069@gmail.com';
 
-$mail->Password = 'yrwy wtlt gpsv emcx';
+$mail->Password = 'yrwywtltgpsvemcx';
 
 $mail->setFrom('serverside42069@gmail.com', 'Site Notification');
 
