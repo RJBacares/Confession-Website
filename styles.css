@@ -124,3 +124,16 @@ input[type="date"] {
 .button #noButton {
     position: relative;
 }
+
+@media only screen and (min-width: 390px){
+    .container {
+        width: auto;
+    }
+}
+
+@media only screen and (min-width: 768px){
+    .container {
+        width: auto;
+    }
+}
+
