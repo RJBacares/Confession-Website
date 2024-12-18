@@ -22,7 +22,7 @@ $mail->SMTPAuth = true;
 
 $mail->Username = 'serverside42069@gmail.com';
 
-$mail->Password = 'yrwy wtlt gpsv emcx';
+$mail->Password = 'kgel stwl pakb yuzj';
 
 $mail->setFrom('serverside42069@gmail.com', 'Site Notification');
 
