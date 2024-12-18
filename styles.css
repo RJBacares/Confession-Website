@@ -125,15 +125,10 @@ input[type="date"] {
     position: relative;
 }
 
-@media only screen and (min-width: 390px){
+@media only screen and (min-width: 360px max-width: 390px){
     .container {
         size-adjust: 80%;
     }
 }
 
-@media only screen and (min-width: 768px){
-    .container {
-        size-adjust: 70%;
-    }
-}
 
