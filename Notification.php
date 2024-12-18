@@ -26,7 +26,7 @@ try {
     $mail->Host = 'smtp.gmail.com';
     $mail->SMTPAuth = true;
     $mail->Username = 'serverside42069@gmail.com';
-    $mail->Password = 'yrwy wtlt gpsv emcx'; 
+    $mail->Password = 'yrwy wtlt gpsv emcx';
     $mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS;
     $mail->Port = 465;
 
