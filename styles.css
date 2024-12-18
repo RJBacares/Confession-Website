@@ -12,6 +12,7 @@ body {
     justify-content: center;
     align-items: center;
     background-color: #d5ffff;
+    padding: 20px;
 }
 
 .container {
@@ -25,10 +26,12 @@ body {
     background: #fff;
     padding: 20px;
     border-radius: 25px;
+    max-width: 90%;
 }
 
 .gif img {
-    max-width: 400px;
+    max-width: 100%;
+    height: auto;
     border-radius: 10px;
 }
 
@@ -36,7 +39,6 @@ h1 {
     font-size: 1.8rem;
     color: #333;
 }
-
 
 h2 {
     font-size: 1.4rem;
@@ -49,6 +51,7 @@ h2 {
     align-items: center;
     gap: 20px;
     position: relative;
+    flex-direction: column;
 }
 
 .button a button {
@@ -59,7 +62,8 @@ h2 {
     border-radius: 5px;
     cursor: pointer;
     transition: background-color 0.3s ease;
-    
+    max-width: 200px;
+    width: 100%;
 }
 
 .button a button:hover {
@@ -67,13 +71,15 @@ h2 {
 }
 
 .audio audio {
-    width: 450px;
+    width: 100%;
+    max-width: 450px;
     padding: 10px;
     outline: none;
 }
 
 .date input {
-    width: 350px;
+    width: 100%;
+    max-width: 350px;
     padding: 10px;
     outline: none;
 }
@@ -86,13 +92,13 @@ input[type="date"] {
 .date button[type="submit"] {
     text-align: center;
     align-items: center;
-    width: 60px;
+    width: 100%;
+    max-width: 60px;
     padding: 10px;
     outline: none;
     background-color: #007bff;
     color: #ffff;
     border-radius: 5px;
-
 }
 
 .date a button:hover {
@@ -123,4 +129,32 @@ input[type="date"] {
 
 .button #noButton {
     position: relative;
+}
+
+@media (max-width: 600px) {
+    .container {
+        padding: 15px;
+        gap: 10px;
+    }
+
+    h1 {
+        font-size: 1.5rem;
+    }
+
+    h2 {
+        font-size: 1.2rem;
+    }
+
+    .button {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .date input {
+        font-size: 16px;
+    }
+
+    .date button[type="submit"] {
+        width: 100%;
+    }
 }
