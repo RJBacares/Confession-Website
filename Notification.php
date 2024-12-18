@@ -1,21 +1,46 @@
 <?php
-    $to = "notification43069@gmail.com";
-    $subject = "Selected Date";
+use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\Exception;
 
-    if (isset($_GET['date'])) {
-        $date = $_GET['date'];
+require 'vendor/autoload.php';
+
+$to = "notification43069@gmail.com";
+$subject = "Selected Date";
+
+if (isset($_GET['date'])) {
+    $date = $_GET['date'];
+    if (strtotime($date)) {
         $formattedDate = date("m-d-Y", strtotime($date));
         $message = "SEE YOU AT " . $formattedDate;
     } else {
-        $message = "No date selected.";
+        $message = "Invalid date format provided.";
     }
+} else {
+    $message = "No date selected.";
+}
 
-    $headers = "MIME-Version: 1.0\r\n";
-    $headers .= "Content-Type: text/plain; charset=UTF-8\r\n";
-    $headers .= "From: serverside42069@gmail.com\r\n";
-    $headers .= "Reply-To: serverside42069@gmail.com\r\n";
+$mail = new PHPMailer(true);
 
-    $send = mail($to, $subject, $message, $headers);
+try {
+    $mail->isSMTP();
+    $mail->Host = 'smtp.gmail.com';
+    $mail->SMTPAuth = true;
+    $mail->Username = 'serverside42069@gmail.com';
+    $mail->Password = 'serverside12345'; 
+    $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
+    $mail->Port = 587;
 
-    echo ($send ? "Sent" : "Error");
+    
+    $mail->setFrom('serverside42069@gmail.com', 'Notification');
+    $mail->addAddress($to);
+
+    $mail->isHTML(false);
+    $mail->Subject = $subject;
+    $mail->Body = $message;
+
+    $mail->send();
+    echo "Mail sent successfully!";
+} catch (Exception $e) {
+    echo "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";
+}
 ?>
