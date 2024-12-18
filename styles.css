@@ -161,6 +161,7 @@ input[type="date"] {
 
     .date input {
         width: 100%;
+        max-width: 100px;
         font-size: 16px;
     }
 
