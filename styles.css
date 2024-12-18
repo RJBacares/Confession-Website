@@ -147,8 +147,16 @@ input[type="date"] {
         font-size: 1.2rem;
     }
 
+    .audio {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+    }
+
     .audio audio {
-        width: 70%;
+        width: 100%;
+        max-width: 300px;
+        display: block;
     }
 
     .date input {
