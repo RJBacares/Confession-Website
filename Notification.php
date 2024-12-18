@@ -37,9 +37,10 @@ try {
     $mail->Subject = $subject;
     $mail->Body = $message;
 
+    $mail->SMTPDebug = SMTP::DEBUG_SERVER;
     $mail->send();
     echo "Mail sent successfully!";
 } catch (Exception $e) {
-    echo "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";
+    echo "Mailer Error: {$mail->ErrorInfo}";
 }
 ?>
