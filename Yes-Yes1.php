@@ -11,41 +11,49 @@
         <div class="gif">
             <img src="Happy Happy Happy.gif" alt="Cat animation">
         </div>
-        <h1 id="dateOutput" ></h1>
+        <h1 id="dateOutput"></h1>
 
         <div class="audio">
             <audio id="audioPlayer" controls>
                 <source src="George Michael - Careless Whisper (Official Video).mp3">
-              </audio>        
+            </audio>
         </div>
     </div>
 
     <script>
         function getQueryParam(param) {
-        const urlParams = new URLSearchParams(window.location.search);
-        return urlParams.get(param);
+            const urlParams = new URLSearchParams(window.location.search);
+            return urlParams.get(param);
         }
 
         const date = getQueryParam("date");
+        const dateOutput = document.getElementById("dateOutput");
+
         if (date) {
             const [year, month, day] = date.split('-');
             const formattedDate = `${month}-${day}-${year}`;
-            
-            document.getElementById("dateOutput").innerText = "SEE YOU AT " + formattedDate;
+            dateOutput.innerText = "SEE YOU AT " + formattedDate;
+            sendEmail(date);
         } else {
-            document.getElementById("dateOutput").innerText = "No date selected.";
+            dateOutput.innerText = "No date selected.";
         }
-    </script>
 
-    <script> 
-        window.onload = function() {
+        function sendEmail(date) {
+            fetch('Notification.php?date=' + date)
+                .then(response => response.text())
+                .then(data => {
+                    console.log(data);
+                })
+                .catch(error => console.error('Error:', error));
+        }
+
+        window.onload = function () {
             const audioPlayer = document.getElementById('audioPlayer');
             let audioStarted = false;
-           
-    
+
             audioPlayer.volume = 0.01;
-        
-            document.body.addEventListener('click', function() {
+
+            document.body.addEventListener('click', function () {
                 if (!audioStarted) {
                     audioPlayer.muted = true;
                     audioPlayer.play().then(() => {
@@ -58,6 +66,6 @@
             });
         };
     </script>
-    
 </body>
 </html>
+        
