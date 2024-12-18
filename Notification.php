@@ -28,7 +28,7 @@ try {
     $mail->Username = 'serverside42069@gmail.com';
     $mail->Password = 'yrwy wtlt gpsv emcx'; 
     $mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS;
-    $mail->Port = 465; 
+    $mail->Port = 465;
 
     $mail->setFrom('serverside42069@gmail.com', 'Notification');
     $mail->addAddress($to);
