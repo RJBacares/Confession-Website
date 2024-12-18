@@ -153,11 +153,25 @@ input[type="date"] {
 
     .date input {
         width: 100%;
+        font-size: 16px;
     }
 
-    .button a button,
+    input[type="date"] {
+        text-align: center;
+        font-size: 16px;
+    }
+
     .date button[type="submit"] {
-        width: 100%;
+        width: auto;
+        padding: 10px;
+        font-size: 1rem;
+    }
+
+    .button a button {
+        width: auto;
+        padding: 10px 15px;
+        font-size: 1rem;
     }
 }
+
 
