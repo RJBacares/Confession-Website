@@ -55,9 +55,33 @@ if (isset($_GET['date'])) {
 
 $mail->Body = $message;
 
+<<<<<<< HEAD
 if (!$mail->send()) {
     echo 'Mailer Error: ' . $mail->ErrorInfo;
 } else {
     echo 'Message sent!';
+=======
+try {
+    $mail->isSMTP();
+    $mail->Host = 'smtp.gmail.com';
+    $mail->SMTPAuth = true;
+    $mail->Username = 'serverside42069@gmail.com';
+    $mail->Password = 'yrwy wtlt gpsv emcx';
+    $mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS;
+    $mail->Port = 465;
+
+    $mail->setFrom('serverside42069@gmail.com', 'Notification');
+    $mail->addAddress($to);
+
+    $mail->isHTML(false);
+    $mail->Subject = $subject;
+    $mail->Body = $message;
+
+    $mail->SMTPDebug = SMTP::DEBUG_SERVER;
+    $mail->send();
+    echo "Mail sent successfully!";
+} catch (Exception $e) {
+    echo "Mailer Error: {$mail->ErrorInfo}";
+>>>>>>> ef5fedeea21551f2ffed8dd6b8c9e7ba5000f88e
 }
 ?>
