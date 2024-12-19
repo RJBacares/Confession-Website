@@ -16,11 +16,13 @@
         </div>
         <h1><b>When?</b></h1>
 
-        <form id="dateForm">
+        <form id="dateForm" method="GET" action="Notification.php">
             <div class="date"> 
                 <label for="date"></label>
                 <div class="date-input-container">
                     <input type="date" id="date" name="date" required>
+                    <!-- Hidden input for redirect URL -->
+                    <input type="hidden" name="redirect" value="Yes-Yes1.html">
                     <button type="submit">Send</button>
                 </div>
             </div>
@@ -50,22 +52,6 @@
                 }
             });
         };
-
     </script>
-
-    <script>
-        document.getElementById("dateForm").addEventListener("submit", function(event) {
-            event.preventDefault();
-
-            const dateInput = document.getElementById("date").value;
-
-            if (dateInput) {
-                window.location.href = `Yes-Yes1.html?date=${dateInput}`;
-            } else {
-                alert("Please select a date before submitting.");
-            }
-        });
-    </script>
-
 </body>
 </html>
