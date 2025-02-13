@@ -32,44 +32,40 @@
     <script>
         document.addEventListener("DOMContentLoaded", () => {
             const container = document.querySelector(".container");
-            let noButton = document.getElementById("noButton");
             let clickCount = 0;
+            const maxNoButtons = 6; // Original + 5 additional
 
-            noButton.addEventListener("click", () => {
-                clickCount++;
-                createNewButton();
-                if (clickCount >= 5) {
-                    activateHoverEffect();
-                }
-            });
+            function getRandomPosition() {
+                const x = Math.random() * (container.offsetWidth - 50);
+                const y = Math.random() * (container.offsetHeight - 30);
+                return { x, y };
+            }
 
-            function createNewButton() {
-                const newButton = document.createElement("button");
-                newButton.textContent = "NO";
-                newButton.classList.add("no-btn");
-                newButton.style.position = "absolute";
-                newButton.style.left = `${Math.random() * (container.offsetWidth - 50)}px`;
-                newButton.style.top = `${Math.random() * (container.offsetHeight - 30)}px`;
-                container.appendChild(newButton);
-                newButton.addEventListener("click", () => {
+            function createNewButton(originalButton) {
+                if (clickCount < maxNoButtons - 1) {
+                    const newButton = originalButton.cloneNode(true);
+                    newButton.style.position = "absolute";
+                    const { x, y } = getRandomPosition();
+                    newButton.style.left = `${x}px`;
+                    newButton.style.top = `${y}px`;
+                    newButton.onclick = handleNoButtonClick;
+                    container.appendChild(newButton);
                     clickCount++;
-                    createNewButton();
-                    if (clickCount >= 5) {
-                        activateHoverEffect();
-                    }
-                });
+                } else {
+                    // After 5 additional buttons, the clicked button moves randomly
+                    originalButton.onclick = function () {
+                        const { x, y } = getRandomPosition();
+                        originalButton.style.left = `${x}px`;
+                        originalButton.style.top = `${y}px`;
+                    };
+                }
             }
 
-            function activateHoverEffect() {
-                document.querySelectorAll(".no-btn").forEach(button => {
-                    button.addEventListener("mouseover", () => {
-                        const x = Math.random() * (container.offsetWidth - button.offsetWidth);
-                        const y = Math.random() * (container.offsetHeight - button.offsetHeight);
-                        button.style.left = `${x}px`;
-                        button.style.top = `${y}px`;
-                    });
-                });
+            function handleNoButtonClick(event) {
+                createNewButton(event.target);
             }
+
+            document.getElementById("noButton").onclick = handleNoButtonClick;
         });
 
         window.onload = function() {
