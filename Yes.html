@@ -30,15 +30,6 @@
     </div>
 
     <script>
-        const noButton = document.getElementById('noButton');
-
-        noButton.addEventListener('mouseover', () => {
-            const container = document.querySelector('.container');
-            const x = Math.random() * (container.offsetWidth - noButton.offsetWidth);
-            const y = Math.random() * (container.offsetHeight - noButton.offsetHeight);
-            noButton.style.left = `${x}px`;
-            noButton.style.top = `${y}px`;
-        });
 
         window.onload = function() {
             const audioPlayer = document.getElementById('audioPlayer');
